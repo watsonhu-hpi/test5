@@ -19,6 +19,12 @@ DatabaseManager::DatabaseManager(const std::string& dbPath) {
 
     const char* createFileTagsTable = "CREATE TABLE IF NOT EXISTS file_tags (id INTEGER PRIMARY KEY, file_path TEXT, tag TEXT);";
     sqlite3_exec(db, createFileTagsTable, nullptr, nullptr, nullptr);
+
+    const char* createCollaborationsTable = "CREATE TABLE IF NOT EXISTS collaborations (id INTEGER PRIMARY KEY, file_path TEXT, username TEXT);";
+    sqlite3_exec(db, createCollaborationsTable, nullptr, nullptr, nullptr);
+
+    const char* createRecommendationsTable = "CREATE TABLE IF NOT EXISTS recommendations (id INTEGER PRIMARY KEY, username TEXT, recommendation TEXT);";
+    sqlite3_exec(db, createRecommendationsTable, nullptr, nullptr, nullptr);
 }
 
 DatabaseManager::~DatabaseManager() {
